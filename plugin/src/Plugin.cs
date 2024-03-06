@@ -1,13 +1,15 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using HarmonyLib;
+using plugin.src.Patches;
 
 // TODO: Change 'YourName' to your name. 
-namespace YourName
+namespace CatalpaBow
 {
     // TODO: Change 'YourPlugin' to the name of your plugin
     [BepInAutoPlugin]
     [BepInProcess("h3vr.exe")]
-    public partial class YourPlugin : BaseUnityPlugin
+    public partial class StovePipeClearance : BaseUnityPlugin
     {
         /* == Quick Start == 
          * Your plugin class is a Unity MonoBehaviour that gets added to a global game object when the game starts.
@@ -24,9 +26,11 @@ namespace YourName
         private void Awake()
         {
             Logger = base.Logger;
-            
             // Your plugin's ID, Name, and Version are available here.
-            Logger.LogMessage($"Hello, world! Sent from {Id} {Name} {Version}");
+            //Logger.LogMessage($"Hello, world! Sent from {Id} {Name} {Version}");
+            Harmony.CreateAndPatchAll(typeof(StovepipeBasePatches));
+
+
         }
         
         // The line below allows access to your plugin's logger from anywhere in your code, including outside of this file.

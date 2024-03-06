@@ -1,12 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <!-- Plugin name, version, etc. -->
     <!-- TODO: Change these values! -->
     <PropertyGroup>
-        <AssemblyName>your_name.mod_name</AssemblyName>
-        <Version>1.0.0</Version>
-        <Authors>your_name</Authors>
-        <AssemblyTitle>BepInEx Plugin Title</AssemblyTitle>
-        <Description>Sample BepInEx plugin template for H3VR!</Description>
+        <AssemblyName>CatalpaBow.StovePipeClearance</AssemblyName>
+        <Version>0.0.1</Version>
+        <Authors>CatalpaBow</Authors>
+        <AssemblyTitle>StovePipeClearance</AssemblyTitle>
+        <Description>StovePipeClearanceMod</Description>
         <PackageProjectUrl>https://github.com/H3VR-Modding/H3VRPluginTemplate</PackageProjectUrl>
     </PropertyGroup>
 
@@ -46,24 +46,35 @@
         </PackageReference>
 
         <!-- References to Unity, BepInEx, and the publicized H3 libraries -->
-        <PackageReference Include="UnityEngine" Version="5.6.1"/>
-        <PackageReference Include="BepInEx.Core" Version="5.4.17"/>
-        <PackageReference Include="H3VR.GameLibs" Version="0.111.5"/>
+        <PackageReference Include="UnityEngine" Version="5.6.1" />
+        <PackageReference Include="BepInEx.Core" Version="5.4.17" />
+        <PackageReference Include="H3VR.GameLibs" Version="0.111.5" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Assembly-CSharp">
+        <HintPath>Packages\Assembly-CSharp.dll</HintPath>
+      </Reference>
+      <Reference Include="BepInEx">
+        <HintPath>Packages\BepInEx.dll</HintPath>
+      </Reference>
+      <Reference Include="Stovepipe">
+        <HintPath>Packages\Stovepipe.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
     <!-- When in debug mode, also build mono debugging symbols (Only available on Windows) -->
     <Target Name="MonoDebugSymbols" AfterTargets="PostBuildEvent" Condition="'$(DebugType)' == 'full' AND '$(OS)' == 'Windows_NT'">
-        <Exec Command="$(ProjectDir)../tools/pdb2mdb.exe $(ProjectDir)$(OutDir)$(AssemblyName).dll"/>
+        <Exec Command="$(ProjectDir)../tools/pdb2mdb.exe $(ProjectDir)$(OutDir)$(AssemblyName).dll" />
     </Target>
 
     <!-- Build a thunderstore zip after a build (Only available on Windows) -->
     <Target Name="PackageThunderstore" AfterTargets="MonoDebugSymbols" Condition="'$(OS)' == 'Windows_NT'">
-        <Exec Command="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonInteractive -executionpolicy Unrestricted -command &quot;&amp; { ../tools/make_ts.ps1 -ProjectFilePath $(ProjectPath) -OutputPath $(ProjectDir)$(OutDir) } &quot;" LogStandardErrorAsError="True" ContinueOnError="False"/>
+        <Exec Command="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonInteractive -executionpolicy Unrestricted -command &quot;&amp; { ../tools/make_ts.ps1 -ProjectFilePath $(ProjectPath) -OutputPath $(ProjectDir)$(OutDir) } &quot;" LogStandardErrorAsError="True" ContinueOnError="False" />
     </Target>
 
     <!-- The 'clean' command won't cleanup stuff we make so do that here -->
     <Target Name="CleanAdditionalStuff" AfterTargets="Clean">
-        <Delete Files="$(ProjectDir)$(OutDir)$(AssemblyName).dll.mdb"/>
-        <Delete Files="$(ProjectDir)$(OutDir)$(AssemblyName).zip"/>
+        <Delete Files="$(ProjectDir)$(OutDir)$(AssemblyName).dll.mdb" />
+        <Delete Files="$(ProjectDir)$(OutDir)$(AssemblyName).zip" />
     </Target>
 </Project>
