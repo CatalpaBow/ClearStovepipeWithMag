@@ -9,16 +9,16 @@ using System.Text;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-namespace plugin.src.Patches
+namespace ClearStovepipeWithMag.src.Patches
 {
     public class StovepipeBasePatches
     {
         [HarmonyPatch(typeof(StovepipeBase), "StartStovepipe")]
         [HarmonyPostfix]
         private static void AddClearncerComponent(StovepipeData data) {
-            #if DEBUG
+#if DEBUG
             Debug.Log("Injected!");
-            #endif
+#endif
             GameObject fireArm = data.ejectedRound.transform.parent.gameObject;
             var clearancer = fireArm.AddComponent<ClearStovepipeWithMag>();
             clearancer.Intialize(data, fireArm.GetComponent<Rigidbody>());
@@ -26,7 +26,8 @@ namespace plugin.src.Patches
     }
 
 
-    public class ClearStovepipeWithMag : MonoBehaviour{
+    public class ClearStovepipeWithMag : MonoBehaviour
+    {
         public StovepipeData data;
         public Rigidbody wepRb;
 
@@ -38,18 +39,18 @@ namespace plugin.src.Patches
         void OnCollisionEnter(Collision collision) {
             foreach (var con in collision.contacts) {
                 bool isArmRound = con.thisCollider.GetComponentInParent<FVRFireArmRound>();
-                bool isMagazine = con.otherCollider.attachedRigidbody.GetComponent<FVRFireArmMagazine>() ;
-                #if DEBUG
+                bool isMagazine = con.otherCollider.attachedRigidbody.GetComponent<FVRFireArmMagazine>();
+#if DEBUG
                 //Debug.Log("isArmRound:" + isArmRound + "isMagazine:" + isMagazine);
                 //Debug.Log(con.thisCollider.gameObject.name);
-                #endif
-                
-                if(!(isArmRound && isMagazine)) {
+#endif
+
+                if (!(isArmRound && isMagazine)) {
                     return;
                 }
-                #if DEBUG
+#if DEBUG
                 //Debug.Log("DoClearStovepipe");
-                #endif
+#endif
                 StovepipeBase.UnStovepipe(data, true, wepRb);
                 break;
             }

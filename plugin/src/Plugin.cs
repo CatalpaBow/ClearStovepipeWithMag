@@ -1,7 +1,8 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using ClearStovepipeWithMag.src.Patches;
 using HarmonyLib;
-using plugin.src.Patches;
+using System.Diagnostics;
 
 // TODO: Change 'YourName' to your name. 
 namespace CatalpaBow
@@ -9,7 +10,7 @@ namespace CatalpaBow
     // TODO: Change 'YourPlugin' to the name of your plugin
     [BepInAutoPlugin]
     [BepInProcess("h3vr.exe")]
-    public partial class StovePipeClearance : BaseUnityPlugin
+    public partial class Plugin : BaseUnityPlugin
     {
         /* == Quick Start == 
          * Your plugin class is a Unity MonoBehaviour that gets added to a global game object when the game starts.
@@ -29,6 +30,7 @@ namespace CatalpaBow
             // Your plugin's ID, Name, and Version are available here.
             //Logger.LogMessage($"Hello, world! Sent from {Id} {Name} {Version}");
             Harmony.CreateAndPatchAll(typeof(StovepipeBasePatches));
+            Logger.Log(LogLevel.Info,"Hello,World!");
 
 
         }
