@@ -16,7 +16,9 @@ namespace plugin.src.Patches
         [HarmonyPatch(typeof(StovepipeBase), "StartStovepipe")]
         [HarmonyPostfix]
         private static void AddClearncerComponent(StovepipeData data) {
+            #if DEBUG
             Debug.Log("Injected!");
+            #endif
             GameObject fireArm = data.ejectedRound.transform.parent.gameObject;
             var clearancer = fireArm.AddComponent<ClearStovepipeWithMag>();
             clearancer.Intialize(data, fireArm.GetComponent<Rigidbody>());
@@ -34,18 +36,21 @@ namespace plugin.src.Patches
         }
 
         void OnCollisionEnter(Collision collision) {
-            Debug.Log("CollisionDetected!");
             foreach (var con in collision.contacts) {
                 bool isArmRound = con.thisCollider.GetComponentInParent<FVRFireArmRound>();
                 bool isMagazine = con.otherCollider.attachedRigidbody.GetComponent<FVRFireArmMagazine>() ;
+                #if DEBUG
                 //Debug.Log("isArmRound:" + isArmRound + "isMagazine:" + isMagazine);
                 //Debug.Log(con.thisCollider.gameObject.name);
+                #endif
+                
                 if(!(isArmRound && isMagazine)) {
                     return;
                 }
+                #if DEBUG
                 //Debug.Log("DoClearStovepipe");
+                #endif
                 StovepipeBase.UnStovepipe(data, true, wepRb);
-                
                 break;
             }
             Destroy(this);
