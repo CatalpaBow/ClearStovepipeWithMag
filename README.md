@@ -1,5 +1,3 @@
-
-
 # ClearStovepipeWithMag
 ![stovepipe](https://github.com/CatalpaBow/ClearStovepipeWithMag/assets/14165691/40773198-a9d1-4314-9b85-3e362e3ae99c)
 
