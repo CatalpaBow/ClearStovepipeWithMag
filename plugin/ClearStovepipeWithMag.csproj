@@ -3,7 +3,7 @@
   <!-- TODO: Change these values! -->
   <PropertyGroup>
     <AssemblyName>CatalpaBow.ClearStovepipeWithMag</AssemblyName>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>CatalpaBow</Authors>
     <AssemblyTitle>ClearStovepipeWithMag</AssemblyTitle>
     <Description>Clear stovepipe with magazine</Description>
@@ -47,7 +47,7 @@
 
     <!-- References to Unity, BepInEx, and the publicized H3 libraries -->
     <PackageReference Include="UnityEngine" Version="5.6.1" />
-    <PackageReference Include="BepInEx.Core" Version="5.4.21" />
+    <PackageReference Include="BepInEx.Core" Version="5.4.17" />
     <PackageReference Include="H3VR.GameLibs" Version="0.111.5" />
   </ItemGroup>
   <ItemGroup>

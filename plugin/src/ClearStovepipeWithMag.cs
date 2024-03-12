@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace CatalpaBow
 {
     // TODO: Change 'YourPlugin' to the name of your plugin
-    [BepInPlugin("CatalpaBow.ClearStovePipeWithMag","ClearStovepipeWithMag", "0.0.1")]
+    [BepInPlugin("CatalpaBow.ClearStovePipeWithMag","ClearStovepipeWithMag", "0.0.2")]
     [BepInProcess("h3vr.exe")]
     public partial class ClearStovepipeWithMag : BaseUnityPlugin
     {

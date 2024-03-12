@@ -5,6 +5,7 @@
     "description": "{{DESCRIPTION}}",
     "website_url": "{{URL}}",
     "dependencies": [
-        "BepInEx-BepInExPack_H3VR-5.4.1700"
+        "BepInEx-BepInExPack_H3VR-5.4.1700",
+        "Smidgeon-Stovepipe-3.3.4"
     ]
 }
