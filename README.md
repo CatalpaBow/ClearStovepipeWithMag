@@ -5,4 +5,5 @@
 
 You can now clear a stovepipe jam by chopping it with a magazine... 
 This mod was created and inspired by this YouTube video.
+
 AR Stovepipe Clearance - Tap/Rack can lead to double feed? WHY!!:https://youtu.be/tkrxNTWcvEc
