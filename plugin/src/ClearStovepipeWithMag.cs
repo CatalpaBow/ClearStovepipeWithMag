@@ -8,9 +8,9 @@ using System.Diagnostics;
 namespace CatalpaBow
 {
     // TODO: Change 'YourPlugin' to the name of your plugin
-    [BepInAutoPlugin]
+    [BepInPlugin("CatalpaBow.ClearStovePipeWithMag","ClearStovepipeWithMag", "0.0.1")]
     [BepInProcess("h3vr.exe")]
-    public partial class Plugin : BaseUnityPlugin
+    public partial class ClearStovepipeWithMag : BaseUnityPlugin
     {
         /* == Quick Start == 
          * Your plugin class is a Unity MonoBehaviour that gets added to a global game object when the game starts.
@@ -30,9 +30,6 @@ namespace CatalpaBow
             // Your plugin's ID, Name, and Version are available here.
             //Logger.LogMessage($"Hello, world! Sent from {Id} {Name} {Version}");
             Harmony.CreateAndPatchAll(typeof(StovepipeBasePatches));
-            Logger.Log(LogLevel.Info,"Hello,World!");
-
-
         }
         
         // The line below allows access to your plugin's logger from anywhere in your code, including outside of this file.
