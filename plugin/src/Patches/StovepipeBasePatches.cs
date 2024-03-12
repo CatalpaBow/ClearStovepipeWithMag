@@ -37,6 +37,7 @@ namespace ClearStovepipeWithMag.src.Patches
         }
 
         void OnCollisionEnter(Collision collision) {
+
             foreach (var con in collision.contacts) {
                 bool isArmRound = con.thisCollider.GetComponentInParent<FVRFireArmRound>();
                 bool isMagazine = con.otherCollider.attachedRigidbody.GetComponent<FVRFireArmMagazine>();
